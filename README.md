@@ -50,4 +50,4 @@ $ java -jar ./Client.jar
 
 截图
 
-![](./screenshot/screen.png)
+![](https://github.com/rarnu/kydiy/blob/main/screenshot/screen.png)
