@@ -10,10 +10,7 @@ import com.isyscore.kotlin.swing.showInputDialog
 import com.rarnu.opendiy.*
 import java.awt.*
 import java.io.File
-import javax.swing.JDialog
-import javax.swing.JFrame
-import javax.swing.JList
-import javax.swing.JPanel
+import javax.swing.*
 
 class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
 
@@ -39,26 +36,48 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
 
     private var profile = Profile()
 
-    class FontBasePanel(itemName: String) : JPanel(FlowLayout(FlowLayout.LEFT)) {
-
-        private val pName = itemName
-        private lateinit var tpFontName: KTextField
-        private lateinit var tpFontSize: KTextField
-        private lateinit var tpX: KTextField
-        private lateinit var tpY: KTextField
-        private lateinit var tpWidth: KTextField
-        private lateinit var tpRight: KTextField
-        private lateinit var tpLineHeight: KTextField
+    class FontBasePanel(itemName: String?) : JPanel(FlowLayout(FlowLayout.LEFT)) {
+        private val tpFontName: KTextField
+        private val tpFontSize: KTextField
+        private val tpX: KTextField
+        private val tpY: KTextField
+        private val tpWidth: KTextField
+        private val tpRight: KTextField
+        private val tpLineHeight: KTextField
 
         var fontBase: FontBase = FontBase("", 0, 0, 0, 0, 0, 0)
             get() {
                 field.name = tpFontName.text
-                field.size = try { tpFontSize.text.toInt() } catch (th: Throwable) { 0 }
-                field.x = try { tpX.text.toInt() } catch (th: Throwable) { 0 }
-                field.y = try { tpY.text.toInt() } catch (th: Throwable) { 0 }
-                field.width = try { tpWidth.text.toInt() } catch (th: Throwable) { 0 }
-                field.right = try { tpRight.text.toInt() } catch (th: Throwable) { 0 }
-                field.lineHeight = try { tpLineHeight.text.toInt() } catch (th: Throwable) { 0 }
+                field.size = try {
+                    tpFontSize.text.toInt()
+                } catch (th: Throwable) {
+                    0
+                }
+                field.x = try {
+                    tpX.text.toInt()
+                } catch (th: Throwable) {
+                    0
+                }
+                field.y = try {
+                    tpY.text.toInt()
+                } catch (th: Throwable) {
+                    0
+                }
+                field.width = try {
+                    tpWidth.text.toInt()
+                } catch (th: Throwable) {
+                    0
+                }
+                field.right = try {
+                    tpRight.text.toInt()
+                } catch (th: Throwable) {
+                    0
+                }
+                field.lineHeight = try {
+                    tpLineHeight.text.toInt()
+                } catch (th: Throwable) {
+                    0
+                }
                 return field
             }
             set(value) {
@@ -76,25 +95,24 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
             background = Color.WHITE
             preferredSize = Dimension(0, 30)
 
-            add(label(title = pName) {
+            label(title = itemName) {
                 font = Font(font.family, Font.BOLD, font.size + 2)
                 preferredSize = Dimension(90, 30)
-            })
-
-            add(label(title = "字体名称") { preferredSize = Dimension(50, 30) })
-            add(input { tpFontName =this; preferredSize = Dimension(100, 30) })
-            add(label(title = "字体大小") { preferredSize = Dimension(50, 30) })
-            add(input { tpFontSize = this; preferredSize = Dimension(50, 30) })
-            add(label(title = "X坐标") { preferredSize = Dimension(35, 30) })
-            add(input { tpX = this; preferredSize = Dimension(50, 30) })
-            add(label(title = "Y坐标") { preferredSize = Dimension(35, 30) })
-            add(input { tpY = this; preferredSize = Dimension(50, 30) })
-            add(label(title = "宽度") { preferredSize = Dimension(30, 30) })
-            add(input { tpWidth = this; preferredSize = Dimension(50, 30) })
-            add(label(title = "右极坐标") { preferredSize = Dimension(50, 30) })
-            add(input { tpRight = this; preferredSize = Dimension(50, 30) })
-            add(label(title = "行高") { preferredSize = Dimension(30, 30) })
-            add(input { tpLineHeight = this; preferredSize = Dimension(50, 30) })
+            }
+            label(title = "字体名称") { preferredSize = Dimension(50, 30) }
+            tpFontName = input { preferredSize = Dimension(100, 30) }
+            label(title = "字体大小") { preferredSize = Dimension(50, 30) }
+            tpFontSize = input { preferredSize = Dimension(50, 30) }
+            label(title = "X坐标") { preferredSize = Dimension(35, 30) }
+            tpX = input { preferredSize = Dimension(50, 30) }
+            label(title = "Y坐标") { preferredSize = Dimension(35, 30) }
+            tpY = input { preferredSize = Dimension(50, 30) }
+            label(title = "宽度") { preferredSize = Dimension(30, 30) }
+            tpWidth = input { preferredSize = Dimension(50, 30) }
+            label(title = "右极坐标") { preferredSize = Dimension(50, 30) }
+            tpRight = input { preferredSize = Dimension(50, 30) }
+            label(title = "行高") { preferredSize = Dimension(30, 30) }
+            tpLineHeight = input { preferredSize = Dimension(50, 30) }
 
         }
     }
@@ -126,22 +144,23 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
             }
             scroller(position = BorderLayout.CENTER) {
                 vertPanel {
-                    add(FontBasePanel("卡片名称").apply { pfName = this; fontBase = profile.name })
-                    add(FontBasePanel("怪兽种族").apply { pfRace = this; fontBase = profile.race })
-                    add(FontBasePanel("攻击力").apply { pfAtk = this; fontBase = profile.attack })
-                    add(FontBasePanel("守备力").apply { pfDef = this; fontBase = profile.defense })
-                    add(FontBasePanel("基础效果").apply { pfEffect = this; fontBase = profile.effect })
-                    add(FontBasePanel("魔陷效果").apply { pfMTEffect = this; fontBase = profile.mtEffect })
-                    add(FontBasePanel("灵摆效果").apply { pfPEffect = this; fontBase = profile.pEffect })
-                    add(FontBasePanel("基础卡包").apply { pfPack = this; fontBase = profile.pack })
-                    add(FontBasePanel("灵摆卡包").apply { pfPPack = this; fontBase = profile.pPack })
-                    add(FontBasePanel("链接卡包").apply { pfLPack = this; fontBase = profile.lPack })
-                    add(FontBasePanel("卡片终端").apply { pfTerm = this; fontBase = profile.term })
-                    add(FontBasePanel("链接值").apply { pfLink = this; fontBase = profile.link })
-                    add(FontBasePanel("左刻度").apply { pfScaleL = this; fontBase = profile.scaleLeft })
-                    add(FontBasePanel("右刻度").apply { pfScaleR = this; fontBase = profile.scaleRight })
-                    add(FontBasePanel("版权").apply { pfCopyright = this; fontBase = profile.copyright })
-                    add(FontBasePanel("密码").apply { pfPassword = this; fontBase = profile.password })
+                    pfName = custom(position = null, "卡片名称") { fontBase = profile.name }
+                    pfRace = custom(position = null, "怪兽种族") { fontBase = profile.race }
+                    pfAtk = custom(position = null, "攻击力") { fontBase = profile.attack }
+                    pfDef = custom(position = null, "守备力") { fontBase = profile.defense }
+                    pfEffect = custom(position = null, "基础效果") { fontBase = profile.effect }
+                    pfMTEffect = custom(position = null, "魔陷效果") { fontBase = profile.mtEffect }
+                    pfPEffect = custom(position = null, "灵摆效果") { fontBase = profile.pEffect }
+                    pfPack = custom(position = null, "基础卡包") { fontBase = profile.pack }
+                    pfPPack = custom(position = null, "灵摆卡包") { fontBase = profile.pPack }
+                    pfLPack = custom(position = null, "链接卡包") { fontBase = profile.lPack }
+                    pfTerm = custom(position = null, "卡片终端") { fontBase = profile.term }
+                    pfLink = custom(position = null, "链接值") { fontBase = profile.link }
+                    pfScaleL = custom(position = null, "左刻度") { fontBase = profile.scaleLeft }
+                    pfScaleR = custom(position = null, "右刻度") { fontBase = profile.scaleRight }
+                    pfCopyright = custom(position = null, "版权") { fontBase = profile.copyright }
+                    pfPassword = custom(position = null, "密码") { fontBase = profile.password }
+
                     clearPanel {
                         preferredSize = Dimension(0, 40)
                         button(title = "保存") {
@@ -151,7 +170,6 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
                     }
                 }
             }
-
         }
 
         defaultCloseOperation = DISPOSE_ON_CLOSE
@@ -199,7 +217,7 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
 
     private fun loadProfile() {
         val idx = listProfile.selectedIndex
-        profile = when(idx) {
+        profile = when (idx) {
             -1 -> Profile()
             0 -> YPChinese
             1 -> YPJapanese
@@ -223,6 +241,7 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
         pfPassword.fontBase = profile.password
 
     }
+
     private fun saveProfile() {
         val idx = listProfile.selectedIndex
         if (idx == -1) return
