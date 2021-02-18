@@ -72,7 +72,7 @@ class FormMain : JFrame("OpenDIY") {
     init {
         contentPane = rootBorderPanel {
             toolbar(position = BorderLayout.NORTH) {
-                preferredSize = Dimension(0, 30)
+                size { 0 x 30 }
                 background = Color.WHITE
                 this.isFloatable = false
                 button(title = "新建") { addActionListener { newCard() } }
@@ -101,29 +101,29 @@ class FormMain : JFrame("OpenDIY") {
             }
             borderPanel {
                 clearPanel(position = BorderLayout.WEST) {
-                    preferredSize = Dimension(600, 0)
+                    size { 600 x 0 }
                     cardImage = label {
-                        setBounds(0, 0, 595, 867)
+                        bounds { (0 x 0) and (595 x 867) }
                     }
                 }
                 scroller(position = BorderLayout.CENTER) {
                     vertPanel {
                         borderPanel {
-                            label(title = "卡片配置", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                            label(title = "卡片配置", position = BorderLayout.WEST) { size { 80 x 30 } }
                             cbProfile = combobox(array = getProfileList().toTypedArray()) {
                                 background = Color.WHITE
-                                preferredSize = Dimension(0, 30)
+                                size { 0 x 30 }
                             }
                         }
                         borderPanel {
-                            label(title = "卡片名称", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                            txtCardName = input { preferredSize = Dimension(0, 30) }
+                            label(title = "卡片名称", position = BorderLayout.WEST) { size { 80 x 30 } }
+                            txtCardName = input { size { 0 x 30 } }
                         }
                         borderPanel {
-                            label(title = "卡片类型", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                            label(title = "卡片类型", position = BorderLayout.WEST) { size { 80 x 30 } }
                             cbCardType = combobox(array = CardType.values().map { "$it" }.toTypedArray()) {
                                 background = Color.WHITE
-                                preferredSize = Dimension(0, 30)
+                                size { 0 x 30 }
                                 addItemListener { e ->
                                     if (e.stateChange == ItemEvent.SELECTED) {
                                         val ct = CardType.valueOf(e.item as String)
@@ -136,54 +136,54 @@ class FormMain : JFrame("OpenDIY") {
                         }
 
                         borderPanel {
-                            label(title = "所在卡包", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                            txtPack = input { preferredSize = Dimension(0, 30) }
+                            label(title = "所在卡包", position = BorderLayout.WEST) { size { 80 x 30 } }
+                            txtPack = input { size { 0 x 30 } }
                         }
                         borderPanel {
-                            label(title = "卡片版权", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                            txtCopyright = input(text = "©高桥和希 スタジオ·ダイス/集英社") { preferredSize = Dimension(0, 30) }
+                            label(title = "卡片版权", position = BorderLayout.WEST) { size { 80 x 30 } }
+                            txtCopyright = input(text = "©高桥和希 スタジオ·ダイス/集英社") { size { 0 x 30 } }
                         }
                         borderPanel {
-                            label(title = "卡片密码", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                            txtPassword = input { preferredSize = Dimension(0, 30) }
+                            label(title = "卡片密码", position = BorderLayout.WEST) { size { 80 x 30 } }
+                            txtPassword = input { size { 0 x 30 } }
                         }
                         borderPanel {
-                            label(title = "卡片终端", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                            txtTerm = input { preferredSize = Dimension(0, 30) }
+                            label(title = "卡片终端", position = BorderLayout.WEST) { size { 80 x 30 } }
+                            txtTerm = input { size { 0 x 30 } }
                         }
                         borderPanel {
-                            label(title = "防伪标签", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                            label(title = "防伪标签", position = BorderLayout.WEST) { size { 80 x 30 } }
                             cbLicenseMark = combobox(array = LicType.values().map { "$it" }.toTypedArray()) {
                                 background = Color.WHITE
-                                preferredSize = Dimension(0, 30)
+                                size { 0 x 30 }
                             }
                         }
                         borderPanel {
-                            label(title = "卡名颜色", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                            label(title = "卡名颜色", position = BorderLayout.WEST) { size { 80 x 30 } }
                             cbRare = combobox(array = RareType.values().map { "$it" }.toTypedArray()) {
                                 background = Color.WHITE
-                                preferredSize = Dimension(0, 30)
+                                size { 0 x 30 }
                             }
                         }
                         borderPanel {
-                            label(title = "卡面爆闪", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                            label(title = "卡面爆闪", position = BorderLayout.WEST) { size { 80 x 30 } }
                             cbFace = combobox(array = FaceType.values().map { "$it" }.toTypedArray()) {
                                 background = Color.WHITE
-                                preferredSize = Dimension(0, 30)
+                                size { 0 x 30 }
                             }
                         }
                         borderPanel {
                             borderPanel(position = BorderLayout.WEST) {
-                                preferredSize = Dimension(80, 30)
-                                label(title = "卡片效果", position = BorderLayout.NORTH) { preferredSize = Dimension(80, 30) }
+                                size { 80 x 30 }
+                                label(title = "卡片效果", position = BorderLayout.NORTH) { size { 80 x 30 } }
                             }
                             scroller {
-                                preferredSize = Dimension(0, 100)
+                                size { 0 x 100 }
                                 txtEffect = textArea { }
                             }
                         }
                         borderPanel {
-                            label(title = "卡片图案", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                            label(title = "卡片图案", position = BorderLayout.WEST) { size { 80 x 30 } }
                             btnCardImage = button(title = "选择图片", position = BorderLayout.CENTER) {
                                 addActionListener {
                                     showFileDialog(arrayOf()) { f ->
@@ -198,10 +198,10 @@ class FormMain : JFrame("OpenDIY") {
                             isVisible = true
                             // 怪兽卡，这个最复杂了
                             borderPanel {
-                                label(title = "是否灵摆", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                label(title = "是否灵摆", position = BorderLayout.WEST) { size { 80 x 30 } }
                                 chkPendulum = checkbox {
                                     background = Color.WHITE
-                                    Dimension(0, 30)
+                                    size { 0 x 30 }
                                     addActionListener {
                                         pnlMonsterType.isVisible = !chkPendulum.isSelected
                                         pnlPendulumType.isVisible = chkPendulum.isSelected
@@ -215,36 +215,36 @@ class FormMain : JFrame("OpenDIY") {
                                 }
                             }
                             borderPanel {
-                                label(title = "怪兽属性", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                label(title = "怪兽属性", position = BorderLayout.WEST) { size { 80 x 30 } }
                                 cbAttribute = combobox(array = MonsterAttribute.values().map { "$it" }.toTypedArray()) {
                                     background = Color.WHITE
-                                    preferredSize = Dimension(0, 30)
+                                    size { 0 x 30 }
                                 }
                             }
                             borderPanel {
-                                label(title = "怪兽种族", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                                txtMonsterRace = input { preferredSize = Dimension(0, 30) }
+                                label(title = "怪兽种族", position = BorderLayout.WEST) { size { 80 x 30 } }
+                                txtMonsterRace = input { size { 0 x 30 } }
                             }
                             borderPanel {
-                                label(title = "攻击力", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                                txtAttack = input { preferredSize = Dimension(0, 30) }
+                                label(title = "攻击力", position = BorderLayout.WEST) { size { 80 x 30 } }
+                                txtAttack = input { size { 0 x 30 } }
                             }
                             borderPanel {
-                                label(title = "守备力", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                                txtDefense = input { preferredSize = Dimension(0, 30) }
+                                label(title = "守备力", position = BorderLayout.WEST) { size { 80 x 30 } }
+                                txtDefense = input { size { 0 x 30 } }
                             }
                             borderPanel {
-                                label(title = "等级阶级", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                label(title = "等级阶级", position = BorderLayout.WEST) { size { 80 x 30 } }
                                 cbLevel = combobox(array = (0..12).toList().toTypedArray()) {
                                     background = Color.WHITE
-                                    preferredSize = Dimension(0, 30)
+                                    size { 0 x 30 }
                                 }
                             }
                             pnlMonsterType = borderPanel {
-                                label(title = "怪兽类型", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                label(title = "怪兽类型", position = BorderLayout.WEST) { size { 80 x 30 } }
                                 cbMonsterType = combobox(array = MonsterType.values().map { "$it" }.toTypedArray()) {
                                     background = Color.WHITE
-                                    preferredSize = Dimension(0, 30)
+                                    size { 0 x 30 }
                                     addItemListener { e ->
                                         if (e.stateChange == ItemEvent.SELECTED) {
                                             val mt = MonsterType.valueOf(e.item as String)
@@ -255,36 +255,36 @@ class FormMain : JFrame("OpenDIY") {
                             }
                             pnlPendulumType = borderPanel {
                                 isVisible = false
-                                label(title = "灵摆类型", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                label(title = "灵摆类型", position = BorderLayout.WEST) { size { 80 x 30 } }
                                 cbPendulumType = combobox(array = PendulumType.values().map { "$it" }.toTypedArray()) {
                                     background = Color.WHITE
-                                    preferredSize = Dimension(0, 30)
+                                    size { 0 x 30 }
                                 }
                             }
 
                             pnlPendulumInfo = vertPanel {
                                 isVisible = false
                                 borderPanel {
-                                    label(title = "左侧刻度", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                    label(title = "左侧刻度", position = BorderLayout.WEST) { size { 80 x 30 } }
                                     cbScaleLeft = combobox(array = (0..13).toList().toTypedArray()) {
                                         background = Color.WHITE
-                                        preferredSize = Dimension(0, 30)
+                                        size { 0 x 30 }
                                     }
                                 }
                                 borderPanel {
-                                    label(title = "右侧刻度", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                    label(title = "右侧刻度", position = BorderLayout.WEST) { size { 80 x 30 } }
                                     cbScaleRight = combobox(array = (0..13).toList().toTypedArray()) {
                                         background = Color.WHITE
-                                        preferredSize = Dimension(0, 30)
+                                        size { 0 x 30 }
                                     }
                                 }
                                 borderPanel {
                                     borderPanel(position = BorderLayout.WEST) {
-                                        preferredSize = Dimension(80, 30)
-                                        label(title = "灵摆效果", position = BorderLayout.NORTH) { preferredSize = Dimension(80, 30) }
+                                        size { 80 x 30 }
+                                        label(title = "灵摆效果", position = BorderLayout.NORTH) { size { 80 x 30 } }
                                     }
                                     scroller {
-                                        preferredSize = Dimension(0, 100)
+                                        size { 0 x 100 }
                                         txtPendulumEffect = textArea { }
                                     }
                                 }
@@ -293,46 +293,46 @@ class FormMain : JFrame("OpenDIY") {
                             pnlLinkInfo = vertPanel {
                                 isVisible = false
                                 borderPanel {
-                                    label(title = "链接值", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
-                                    txtLinkValue = input { preferredSize = Dimension(0, 30) }
+                                    label(title = "链接值", position = BorderLayout.WEST) { size { 80 x 30 } }
+                                    txtLinkValue = input { size { 0 x 30 } }
                                 }
                                 borderPanel {
                                     borderPanel(position = BorderLayout.WEST) {
-                                        preferredSize = Dimension(80, 30)
-                                        label(title = "链接方向", position = BorderLayout.NORTH) { preferredSize = Dimension(80, 30) }
+                                        size { 80 x 30 }
+                                        label(title = "链接方向", position = BorderLayout.NORTH) { size { 80 x 30 } }
                                     }
                                     clearPanel {
-                                        preferredSize = Dimension(36 * 3, 36 * 3)
+                                        size { 36 * 3 x 36 * 3 }
                                         tgLink7 = toggle(title = "7") {
-                                            setBounds(0, 0, 36, 36)
+                                            bounds { (0 x 0) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                         tgLink8 = toggle(title = "8") {
-                                            setBounds(36, 0, 36, 36)
+                                            bounds { (36 x 0) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                         tgLink9 = toggle(title = "9") {
-                                            setBounds(72, 0, 36, 36)
+                                            bounds { (72 x 0) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                         tgLink4 = toggle(title = "4") {
-                                            setBounds(0, 36, 36, 36)
+                                            bounds { (0 x 36) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                         tgLink6 = toggle(title = "6") {
-                                            setBounds(72, 36, 36, 36)
+                                            bounds { (72 x 36) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                         tgLink1 = toggle(title = "1") {
-                                            setBounds(0, 72, 36, 36)
+                                            bounds { (0 x 72) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                         tgLink2 = toggle(title = "2") {
-                                            setBounds(36, 72, 36, 36)
+                                            bounds { (36 x 72) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                         tgLink3 = toggle(title = "3") {
-                                            setBounds(72, 72, 36, 36)
+                                            bounds { (72 x 72) and (36 x 36) }
                                             margin = Insets(0, 0, 0, 0)
                                         }
                                     }
@@ -343,10 +343,10 @@ class FormMain : JFrame("OpenDIY") {
                         pnlMagic = vertPanel {
                             isVisible = false
                             borderPanel {
-                                label(title = "魔法类型", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                label(title = "魔法类型", position = BorderLayout.WEST) { size { 80 x 30 } }
                                 cbMagicType = combobox(array = MagicType.values().map { "$it" }.toTypedArray()) {
                                     background = Color.WHITE
-                                    preferredSize = Dimension(0, 30)
+                                    size { 0 x 30 }
                                 }
                             }
                         }
@@ -354,14 +354,13 @@ class FormMain : JFrame("OpenDIY") {
                         pnlTrap = vertPanel {
                             isVisible = false
                             borderPanel {
-                                label(title = "陷阱类型", position = BorderLayout.WEST) { preferredSize = Dimension(80, 30) }
+                                label(title = "陷阱类型", position = BorderLayout.WEST) { size { 80 x 30 } }
                                 cbTrapType = combobox(array = MagicType.values().map { "$it" }.toTypedArray()) {
                                     background = Color.WHITE
-                                    preferredSize = Dimension(0, 30)
+                                    size { 0 x 30 }
                                 }
                             }
                         }
-
                     }
                 }
             }
@@ -369,7 +368,7 @@ class FormMain : JFrame("OpenDIY") {
         }
 
         defaultCloseOperation = EXIT_ON_CLOSE
-        setSize(1190, 930)
+        size { 1190 x 930 }
         isResizable = false
         setLocationRelativeTo(null)
         isVisible = true

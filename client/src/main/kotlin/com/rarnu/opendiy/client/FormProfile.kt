@@ -93,26 +93,26 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
 
         init {
             background = Color.WHITE
-            preferredSize = Dimension(0, 30)
+            size { 0 x 30 }
 
             label(title = itemName) {
                 font = Font(font.family, Font.BOLD, font.size + 2)
-                preferredSize = Dimension(90, 30)
+                size { 90 x 30 }
             }
-            label(title = "字体名称") { preferredSize = Dimension(50, 30) }
-            tpFontName = input { preferredSize = Dimension(100, 30) }
-            label(title = "字体大小") { preferredSize = Dimension(50, 30) }
-            tpFontSize = input { preferredSize = Dimension(50, 30) }
-            label(title = "X坐标") { preferredSize = Dimension(35, 30) }
-            tpX = input { preferredSize = Dimension(50, 30) }
-            label(title = "Y坐标") { preferredSize = Dimension(35, 30) }
-            tpY = input { preferredSize = Dimension(50, 30) }
-            label(title = "宽度") { preferredSize = Dimension(30, 30) }
-            tpWidth = input { preferredSize = Dimension(50, 30) }
-            label(title = "右极坐标") { preferredSize = Dimension(50, 30) }
-            tpRight = input { preferredSize = Dimension(50, 30) }
-            label(title = "行高") { preferredSize = Dimension(30, 30) }
-            tpLineHeight = input { preferredSize = Dimension(50, 30) }
+            label(title = "字体名称") { size { 50 x 30 } }
+            tpFontName = input { size { 100 x 30 } }
+            label(title = "字体大小") { size { 50 x 30 } }
+            tpFontSize = input { size { 50 x 30 } }
+            label(title = "X坐标") { size { 35 x 30 } }
+            tpX = input { size { 50 x 30 } }
+            label(title = "Y坐标") { size { 35 x 30 } }
+            tpY = input { size { 50 x 30 } }
+            label(title = "宽度") { size { 30 x 30 } }
+            tpWidth = input { size { 50 x 30 } }
+            label(title = "右极坐标") { size { 50 x 30 } }
+            tpRight = input { size { 50 x 30 } }
+            label(title = "行高") { size { 30 x 30 } }
+            tpLineHeight = input { size { 50 x 30 } }
 
         }
     }
@@ -120,23 +120,23 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
     init {
         contentPane = rootBorderPanel {
             borderPanel(position = BorderLayout.WEST) {
-                preferredSize = Dimension(200, 0)
+                size { 200 x 0 }
                 scroller(position = BorderLayout.CENTER) {
                     listProfile = list {
                         addListSelectionListener { e -> if (!e.valueIsAdjusting) loadProfile() }
                     }
                 }
                 toolbar(position = BorderLayout.SOUTH) {
-                    preferredSize = Dimension(200, 30)
+                    size { 200 x 30 }
                     background = Color.WHITE
                     this.isFloatable = false
                     button(title = "+") {
-                        preferredSize = Dimension(30, 30)
+                        size { 30 x 30 }
                         margin = Insets(0, 4, 0, 4)
                         addActionListener { addProfile() }
                     }
                     button(title = "-") {
-                        preferredSize = Dimension(30, 30)
+                        size { 30 x 30 }
                         margin = Insets(0, 4, 0, 4)
                         addActionListener { removeProfile() }
                     }
@@ -162,9 +162,9 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
                     pfPassword = custom(position = null, "密码") { fontBase = profile.password }
 
                     clearPanel {
-                        preferredSize = Dimension(0, 40)
+                        size { 0 x 40 }
                         button(title = "保存") {
-                            setBounds(90, 8, 200, 30)
+                            bounds { (90 x 8) and (200 x 30) }
                             addActionListener { saveProfile() }
                         }
                     }
@@ -173,7 +173,7 @@ class FormProfile(frame: JFrame) : JDialog(frame, "界面参数设置", true) {
         }
 
         defaultCloseOperation = DISPOSE_ON_CLOSE
-        setSize(1080, 650)
+        size { 1080 x 650 }
         isResizable = false
         setLocationRelativeTo(null)
         refreshProfileList()
